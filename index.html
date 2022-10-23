@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: 0;
+            font-family:cursive ;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+
+        }
+        
+        body{
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            flex-direction: column;
+            font-family: cursive;
+            height: 100vh;
+            background: linear-gradient(177.9deg, rgb(26, 28, 44) 3.6%, rgb(34, 41, 57) 105.8%);
+
+            background-size: 400% 400%;
+	        animation: gradient 15s ease infinite;
+
+
+
+        }
+        @keyframes gradient{
+	0% {
+		background-position: 0% 50% ;
+	}
+	50% {
+		background-position: 100% 60% ;
+	}
+	100% {
+		background-position: 0% 60%;
+	}
+  
+}
+        .df{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height:52%;
+            width:95%;
+            margin:10px;
+            background: linear-gradient(-45deg, #f09076, #e73c7e, #23a6d5, #23d5ab,#b57ca3,#d57923);
+
+
+            box-shadow: 20px 12px 20px rgb(0,0,0.1);
+            border-radius: 30px 0px ;
+            background-size: 400% 400%;
+	        animation: gradient 10s ease infinite;
+            text-align: center;
+
+        }
+        
+        @keyframes gradient{
+	0% {
+		background-position: 0% 50% ;
+	}
+	50% {
+		background-position: 100% 60% ;
+	}
+	100% {
+		background-position: 0% 60%;
+	}
+  
+}
+#quotes{
+    
+            font-size: 30px;
+            color:white;
+            font-weight: 500;
+            text-align: center;
+
+           
+        
+    }
+    button{
+        width:250px;
+        font-size: 30px;
+        font-weight: 500;
+        border-radius: 15px;
+        box-shadow: 20px 20px 020px(rgba(rgb(0, 0, 0.2)));
+        margin:20px;
+        text-align: center;
+
+
+
+    }
+    button:hover{
+        width:250px;
+        font-size: 30px;
+        background-color: yellow;
+        border-radius: 12px;
+        box-shadow: 20px 12px 12px(rgba(rgb(0, 0, 0.2)));
+
+    }
+
+#author{
+    position: relative;
+    display: flex;
+    justify-content: end;
+    font-size: 25px;
+    margin-top:10%;
+    margin-left:62%;
+    font-weight: 500;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+    @media(min-width:640px)
+    {
+        .df{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height:64%;
+            width:72%;
+            background: linear-gradient(-45deg, #f09076, #e73c7e, #23a6d5, #23d5ab,#b57ca3,#d57923);
+            border-radius: 30px 0px ;
+            background-size: 400% 400%;
+	        animation: gradient 15s ease infinite;
+            text-align: center;
+
+        }
+        
+     #quotes{
+        text-align: center;
+    font-size: 35px;
+    color:white;
+    font-weight: 500;
+   
+
+}
+    }
+@media(min-width:330px )and (max-width:500px)
+    {
+        .df{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height:50%;
+            width:90%;
+            background: linear-gradient(-45deg, #f09076, #e73c7e, #23a6d5, #23d5ab,#b57ca3,#d57923);
+            border-radius: 30px 0px ;
+            background-size: 400% 400%;
+	        animation: gradient 15s ease infinite;
+            text-align: center;
+
+        }
+        
+     #quotes{
+        padding-left:40px;
+        padding-right: 40px;
+        font-size: 28px;
+        color:white;
+        font-weight: 500;
+        text-align: center;
+
+   
+
+}
+#author{
+    position: relative;
+    display: flex;
+    font-size: 25px;
+    margin-top:10%;
+    margin-left:40%;
+    font-weight: 500;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+   
+}
+
+   
+
+
+
+       
+    </style>
+</head>
+<body>
+    <div class="df">
+    <div id="quotes"></div>
+    <div id="author"></div> 
+   </div>
+    <button id="newq">NEW   QUOTES</button>
+    </div>
+    <script>
+        const quotes = document.getElementById("quotes");
+        const author = document.getElementById("author");
+        const newq = document.getElementById("newq");
+
+        let real ='';
+        let quottedata='';
+        const getneewqoutes =()=>{
+            let rnum = Math.floor(Math.random()*20);   
+            quottedata =real[rnum];   
+            quotes.innerText=`" ${quottedata.text} "`;
+            
+            quottedata.author==null?(author.innerText= '---  By :Shubham') :(author.innerText=`---  By : ${quottedata.author}`);     
+            
+
+
+
+        };
+
+        const getquotes =async()=>{
+        const api ="https://type.fit/api/quotes";
+        try{
+            let data =await fetch("https://type.fit/api/quotes");
+            real = await data.json();
+            getneewqoutes();
+            // console.log(real[10].text); 
+            // console.log(real[10].author); 
+
+
+        }
+        catch(error){
+
+        }
+        };
+         getquotes();
+         newq.addEventListener('click',getneewqoutes);
+
+
+         
+    </script>
+
+</body>
+</html>
