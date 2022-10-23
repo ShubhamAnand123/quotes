@@ -22,10 +22,10 @@
             flex-direction: column;
             font-family: cursive;
             height: 100vh;
-            background: linear-gradient(177.9deg, rgb(26, 28, 44) 3.6%, rgb(34, 41, 57) 105.8%);
-
+            background: linear-gradient(-45deg, #284395, #1068e2, #23a6d5, #8e0a8e,#4e0c45,#520266);
             background-size: 400% 400%;
-	        animation: gradient 15s ease infinite;
+	      animation: gradient 15s ease infinite;
+
 
 
 
@@ -49,12 +49,8 @@
             justify-content: center;
             height:52%;
             width:95%;
-            margin:10px;
-            background: linear-gradient(-45deg, #f09076, #e73c7e, #23a6d5, #23d5ab,#b57ca3,#d57923);
-
-
+            background: white;;
             box-shadow: 20px 12px 20px rgb(0,0,0.1);
-            border-radius: 30px 0px ;
             background-size: 400% 400%;
 	        animation: gradient 10s ease infinite;
             text-align: center;
@@ -73,47 +69,54 @@
 	}
   
 }
+#whatsappit{
+         width:72.5%;
+        font-size: 30px;
+        font-weight: 600;
+        background-color: rgb(20, 228, 44);
+        box-shadow: 20px 10px 20px(rgb(0,0, 0.2));
+        color:white;
+        text-align: center;
+        bottom: 0;
+
+}
 #quotes{
     
             font-size: 30px;
-            color:white;
-            font-weight: 500;
+            font-weight: 600;
             text-align: center;
+            
+            
 
            
         
     }
-    button{
-        width:250px;
-        font-size: 30px;
-        font-weight: 600;
-        border-radius: 15px;
-        box-shadow: 20px 20px 020px(rgba(rgb(0, 0, 0.2)));
-        margin:20px;
-        text-align: center;
-
-
-
-    }
-    button:hover{
-        width:250px;
-        font-size: 30px;
-        background-color: yellow;
-        border-radius: 12px;
-        box-shadow: 20px 12px 12px(rgba(rgb(0, 0, 0.2)));
-
-    }
+    
+   
 
 #author{
     position: relative;
     display: flex;
     justify-content: end;
-    font-size: 25px;
+    font-size: 24px;
     margin-top:10%;
-    margin-left:54%;
+    margin-left:62%;
     font-weight: 400;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+#newq{
+        width:72.5%;
+        font-size: 30px;
+        font-weight: 600;
+        background-color: blue;
+        padding-bottom:0px;
+        box-shadow: 20px 10px (rgb(0,0, 0.2));
+        color:white;
+        text-align: center;
+
+
+
+    }
     @media(min-width:640px)
     {
         .df{
@@ -123,8 +126,6 @@
             justify-content: center;
             height:64%;
             width:72%;
-            background: linear-gradient(-45deg, #f09076, #e73c7e, #23a6d5, #23d5ab,#b57ca3,#d57923);
-            border-radius: 30px 0px ;
             background-size: 400% 400%;
 	        animation: gradient 15s ease infinite;
             text-align: center;
@@ -134,9 +135,13 @@
      #quotes{
         text-align: center;
     font-size: 35px;
-    color:white;
     font-weight: 600;
    
+
+}
+#newq{width: 72.5%;}
+#whatsappit{
+         width:72.5%;      
 
 }
     }
@@ -147,10 +152,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height:50%;
+            height:75%;
             width:90%;
-            background: linear-gradient(-45deg, #f09076, #e73c7e, #23a6d5, #23d5ab,#b57ca3,#d57923);
-            border-radius: 30px 0px ;
             background-size: 400% 400%;
 	        animation: gradient 15s ease infinite;
             text-align: center;
@@ -160,8 +163,7 @@
      #quotes{
         padding-left:40px;
         padding-right: 40px;
-        font-size: 30px;
-        color:white;
+        font-size: 28px;
         font-weight: 600;
         text-align: center;
 
@@ -171,11 +173,17 @@
 #author{
     position: relative;
     display: flex;
-    font-size: 25px;
+    font-size: 30px;
+    margin-bottom: 10%;
     margin-top:10%;
     margin-left:30%;
     font-weight: 400;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#newq{width: 90.5%;}
+#whatsappit{
+         width:90.5%;      
+
 }
    
 }
@@ -192,15 +200,26 @@
     <div id="quotes"></div>
     <div id="author"></div> 
    </div>
-    <button id="newq">NEW   QUOTES</button>
+   <button id="newq">NEW   QUOTES</button>
+   <button id="whatsappit">WHATSAPP IT!!</button>
+
     </div>
     <script>
         const quotes = document.getElementById("quotes");
         const author = document.getElementById("author");
         const newq = document.getElementById("newq");
+        const whatsappit = document.getElementById("whatsappit");
+
 
         let real ='';
         let quottedata='';
+        const whatsapp =()=>
+        {
+            let post =`https://wa.me/7667171183/?text=${quottedata.text}`;
+            window.open(post); 
+
+
+        };
         const getneewqoutes =()=>{
             let rnum = Math.floor(Math.random()*20);   
             quottedata =real[rnum];   
@@ -230,6 +249,7 @@
         };
          getquotes();
          newq.addEventListener('click',getneewqoutes);
+         whatsappit.addEventListener("click",whatsapp);
 
 
          
